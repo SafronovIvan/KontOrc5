@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: app
-          image: assist-py:latest # <-- Укажите ваш образ
+          image: assist-py:latest
+          imagePullPolicy: Never  # <-- ДОБАВИТЬ ЭТУ СТРОКУ
           ports:
             - containerPort: 8080
           envFrom:
@@ -22,15 +23,4 @@ spec:
                 name: app-configmap
             - secretRef:
                 name: app-secret
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 10
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 8080
-            initialDelaySeconds: 15
-            periodSeconds: 20
+          # ... остальная часть файла без изменений

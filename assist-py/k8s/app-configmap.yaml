@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configmap
+data:
+  APP_OWNER: "safronov"
+  APP_PORT: "8080"
+  CACHE_TTL: "120"
+  REDIS_URL: "redis://redis-service:6379/0"
